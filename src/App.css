@@ -1,24 +1,47 @@
-.App {
-  text-align: center;
+.App-Grid {
+  max-width: 1280px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App-Header {
+  padding-top: 2rem;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App-Logo {
+  height: 48px;
 }
 
-.App-intro {
-  font-size: large;
+.App-Container {
+  padding-top: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App-Header-Actions {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+}
+
+.Item-Row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.Item-Checkbox {
+  width: 48px;
+}
+
+.Item-Input {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.Add-Item-Actions {
+  display: flex;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.Add-Item-Actions-Button {
+  margin-right: 12px;
 }
