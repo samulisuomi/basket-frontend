@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    id="svg8"
    version="1.1"
-   viewBox="0 0 124 65.221863"
-   height="65.221863mm"
-   width="124mm">
+   viewBox="0 0 114.00001 60.5"
+   height="60.5mm"
+   width="114mm">
   <defs
      id="defs2" />
   <metadata
@@ -25,18 +25,18 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-23.710954,-100.18636)"
+     transform="translate(-23.710954,-104.90827)"
      id="layer1">
     <text
-       transform="matrix(0.9800267,-0.23308926,0.19886597,0.97308214,0,0)"
+       transform="matrix(0.95751525,-0.2305558,0.27966757,0.97702989,0,0)"
        id="text12"
-       y="162.54916"
-       x="-1.7807789"
+       y="160.6884"
+       x="-18.095655"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50.79999924px;line-height:1.25;font-family:Yesteryear;-inkscape-font-specification:Yesteryear;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        xml:space="preserve"><tspan
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50.79999924px;font-family:Yesteryear;-inkscape-font-specification:Yesteryear;stroke-width:0.26458332"
-         y="162.54916"
-         x="-1.7807789"
+         y="160.6884"
+         x="-18.095655"
          id="tspan10">Basket</tspan></text>
   </g>
 </svg>

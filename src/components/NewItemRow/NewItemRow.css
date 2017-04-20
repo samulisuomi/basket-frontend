@@ -1,0 +1,9 @@
+.NewItemRow-actions {
+  display: flex;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.NewItemRow-button {
+  margin-right: 12px;
+}

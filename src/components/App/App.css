@@ -1,0 +1,23 @@
+.App-container {
+  max-width: 1280px;
+  display: block;
+  padding: 2rem;
+  text-align: center;
+}
+
+.App-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.App-header-logo {
+  height: 48px;
+}
+
+.App-logo {
+  height: 48px;
+}
+
+.App-list {
+  padding-top: 2rem;
+}
