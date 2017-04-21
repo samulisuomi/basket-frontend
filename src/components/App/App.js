@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './basket-logo.svg';
 import './App.css';
+import exampleData from './exampleData.json';
 
 import NewItemRow from '../NewItemRow/NewItemRow'
 
@@ -18,7 +19,15 @@ const muiTheme = getMuiTheme({
   }
 });
 
+// For mock purposes:
+const initialState = !localStorage.getItem("state")
+  ? exampleData
+  : localStorage.getItem("state");
+
 class App extends Component {
+  componentDidMount() {
+    console.log(initialState);
+  }
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>

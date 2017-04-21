@@ -1,0 +1,29 @@
+{
+  "items": [{
+    "id": 0,
+    "description": "Milk",
+    "assigned": ["jane@example.com", "joe@example.com"],
+    "comments": []
+  }, {
+    "id": 1,
+    "description": "Yogurt",
+    "assigned": ["jane@example.com", "joe@example.com"],
+    "comments": [{
+      "id": 0,
+      "author": "jane@example.com",
+      "timestamp": "2017-04-21T15:05:51.230Z",
+      "message": "The one we bought a couple weeks ago?"
+    }]
+  }],
+  "shared": ["jane@example.com", "joe@example.com"],
+  "users": [{
+    "id": "jack@example.com",
+    "name": "Jack Example"
+  }, {
+    "id": "jane@example.com",
+    "name": "Jane Example"
+  }, {
+    "id": "joe@example.com",
+    "name": "Joe Example"
+  }]
+}
