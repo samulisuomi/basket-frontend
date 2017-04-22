@@ -3,3 +3,8 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* Prevent scrolling past content on smaller screens: */
+#root {
+  overflow: hidden;
+}

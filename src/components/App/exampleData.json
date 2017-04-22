@@ -1,12 +1,14 @@
 {
   "items": [{
     "id": 0,
-    "description": "Milk",
+    "text": "Milk",
+    "bought": false,
     "assigned": ["jane@example.com", "joe@example.com"],
     "comments": []
   }, {
     "id": 1,
-    "description": "Yogurt",
+    "text": "Yogurt",
+    "bought": false,
     "assigned": ["jane@example.com", "joe@example.com"],
     "comments": [{
       "id": 0,
@@ -25,5 +27,6 @@
   }, {
     "id": "joe@example.com",
     "name": "Joe Example"
-  }]
+  }],
+  "loggedInAs": "jack@example.com"
 }

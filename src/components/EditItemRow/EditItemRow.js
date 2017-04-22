@@ -3,17 +3,12 @@ import './EditItemRow.css';
 
 import ItemRow from '../ItemRow/ItemRow'
 
-import RaisedButton from 'material-ui/RaisedButton';
-
+// TODO: Combine this and ItemRow if no use:
 class EditItemRow extends Component {
   render() {
     return (
       <div className="EditItemRow">
         <ItemRow/>
-        <div className="EditItemRow-actions">
-          <RaisedButton className="EditItemRow-button" label="Save" primary={true} />
-          <RaisedButton className="EditItemRow-button" label="Discard" />
-        </div>
       </div>
     );
   }   

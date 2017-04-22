@@ -10,7 +10,7 @@ class ShoppingList extends Component {
       <div className="ShoppingList">
         <EditItemRow />
         <EditItemRow />
-        <NewItemRow />
+        <NewItemRow/>
       </div>
     );
   }

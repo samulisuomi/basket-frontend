@@ -1,7 +1,14 @@
+.NewItemRow {
+  width: 100%;
+}
+
+/* Override material default */
+.NewItemRow-textField {
+  width: 100% !important;
+}
+
 .NewItemRow-actions {
   display: flex;
-  width: 100%;
-  padding-left: 40px;
 }
 
 .NewItemRow-button {

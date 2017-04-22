@@ -24,8 +24,9 @@ const initialState = !localStorage.getItem("state")
   : localStorage.getItem("state");
 
 class App extends Component {
-  componentDidMount() {
-    console.log(initialState);
+  constructor() {
+    super();
+    this.state = initialState;
   }
   render() {
     return (
@@ -35,7 +36,8 @@ class App extends Component {
             <img src={logo} className="App-header-logo" alt="logo" />
             <div className="App-header-actions">
               <FlatButton label="New" />
-              <FlatButton label="Share" />
+              <FlatButton label="Invite" />
+              <FlatButton label="Send" />
             </div>
           </div>
           <ShoppingList />
