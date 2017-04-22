@@ -3,7 +3,7 @@ import logo from './basket-logo.svg';
 import './App.css';
 import exampleData from './exampleData.json';
 
-import NewItemRow from '../NewItemRow/NewItemRow'
+import ShoppingList from '../ShoppingList/ShoppingList'
 
 import FlatButton from 'material-ui/FlatButton';
 
@@ -19,7 +19,6 @@ const muiTheme = getMuiTheme({
   }
 });
 
-// For mock purposes:
 const initialState = !localStorage.getItem("state")
   ? exampleData
   : localStorage.getItem("state");
@@ -39,9 +38,7 @@ class App extends Component {
               <FlatButton label="Share" />
             </div>
           </div>
-          <div className="App-list">
-            <NewItemRow/>
-          </div>
+          <ShoppingList />
         </div>
       </MuiThemeProvider>
     );

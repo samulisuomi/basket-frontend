@@ -1,0 +1,9 @@
+.EditItemRow-actions {
+  display: flex;
+  width: 100%;
+  padding-left: 40px;
+}
+
+.EditItemRow-button {
+  margin-right: 12px;
+}

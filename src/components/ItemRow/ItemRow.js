@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './ItemRow.css';
 
 import TextField from 'material-ui/TextField';
@@ -10,13 +11,13 @@ class ItemRow extends React.PureComponent {
   render() {
     return (
       <div className="ItemRow">
-        <div>
+        <div style={{visibility: this.props.textFieldOnly ? 'hidden' : 'visible'}}>
           <Checkbox />
         </div>
         <div className="ItemRow-input-container">
           <TextField id="ItemRow-input-todoprops" autoFocus={true} fullWidth={true} placeholder="Add a new item..." />
         </div>
-        <div>
+        <div style={{visibility: this.props.textFieldOnly ? 'hidden' : 'visible'}}>
           <IconButton className="ItemRow-delete" tooltip="Delete">
             <ActionDelete />
           </IconButton>
@@ -24,6 +25,10 @@ class ItemRow extends React.PureComponent {
       </div>
     );
   }
+}
+
+ItemRow.propTypes = {
+  textFieldOnly: PropTypes.bool
 }
 
 export default ItemRow;
