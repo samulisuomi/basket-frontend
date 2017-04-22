@@ -3,7 +3,7 @@
 }
 
 /* Override material default */
-.NewItemRow-textField {
+#NewItemRow-textField {
   width: 100% !important;
 }
 

@@ -19,7 +19,7 @@ class ItemRow extends React.PureComponent {
           <Checkbox />
         </div>
         <div className="ItemRow-input-container">
-          <TextField id="ItemRow-input-todoprops" autoFocus={true} fullWidth={true} placeholder={this.props.placeholder} />
+          <TextField id="ItemRow-input-todoprops" fullWidth={true} placeholder={this.props.placeholder} />
         </div>
         <div style={{visibility: this.props.textFieldOnly ? 'hidden' : 'visible'}}>
           <IconButton className="ItemRow-button" tooltip="Assign">
