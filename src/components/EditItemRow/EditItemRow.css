@@ -1,9 +1,9 @@
-.EditItemRow-actions {
+.EditItemRow {
   display: flex;
-  width: 100%;
-  padding-left: 40px;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.EditItemRow-button {
-  margin-right: 12px;
+.EditItemRow-TextField-container {
+  flex: 1 0 256px;
 }

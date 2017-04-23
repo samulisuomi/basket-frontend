@@ -1,9 +1,0 @@
-.ItemRow {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.ItemRow-input-container {
-  flex: 1 0 256px;
-}

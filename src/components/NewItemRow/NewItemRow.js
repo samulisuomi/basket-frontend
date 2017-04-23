@@ -1,46 +1,61 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import './NewItemRow.css';
-
-import { connect } from 'react-redux'
-import { addItem } from '../../actions';
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-// TODO how to have state and redux+dispatch at the same time:
-const NewItemRow = ({dispatch}) => {
-  let input;
+class NewItemRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      textFieldValue: '',
+    };
+  }
 
-  return (
-    <div className="NewItemRow">
-      <form onSubmit={e => {
-        e.preventDefault();
-        if (!input.value.trim()) {
-          return;
-        } else {
-          dispatch(addItem(input.value));
-          input.value = '';
-        }
-      }}>
-        <TextField
-          id="NewItemRow-textField"
-          placeholder="Add a new item..."
-          autoFocus={true}
-          value={this.state.value}
-          onChange={this.handleChange}
-        />
-        <div className="NewItemRow-actions">
-          <RaisedButton
-            className="NewItemRow-button"
-            label="Add"
-            primary={true}
-            onClick={() => console.log(":)")}
+  handleTextFieldChange = (event) => {
+    this.setState({
+      textFieldValue: event.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.onAddItem(this.state.textFieldValue);
+    this.setState({
+      textFieldValue: ''
+    });
+  }
+
+  render() {
+    return (
+      <div className="NewItemRow">
+        <form onSubmit={this.handleSubmit}>
+          <TextField
+            id="NewItemRow-TextField"
+            className="NewItemRow-TextField"
+            value={this.state.textFieldValue}
+            onChange={this.handleTextFieldChange}
+            placeholder="Add a new item..."
+            autoFocus={true}
           />
-          <RaisedButton className="NewItemRow-button" label="Cancel" />
-        </div>
-      </form>
-    </div>
-  );
+          <div className="NewItemRow-actions">
+            <RaisedButton
+              className="NewItemRow-button"
+              label="Add"
+              primary={true}
+              type="submit"
+            />
+            <RaisedButton className="NewItemRow-button" label="Cancel" />
+          </div>
+        </form>
+      </div>
+    );
+  }
+}
+
+NewItemRow.propTypes = {
+  onAddItem: PropTypes.func.isRequired
 }
 
 export default NewItemRow;

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './basket-logo.svg';
 import './App.css';
 
@@ -18,24 +18,20 @@ const muiTheme = getMuiTheme({
   }
 });
 
-class App extends Component {
-  render() {
-    return (
-      <MuiThemeProvider muiTheme={muiTheme}>
-        <div className="App-container">
-          <div className="App-header">
-            <img src={logo} className="App-header-logo" alt="logo" />
-            <div className="App-header-actions">
-              <FlatButton label="New" />
-              <FlatButton label="Invite" />
-              <FlatButton label="Send" />
-            </div>
-          </div>
-          <ShoppingList />
+const App = (props) => (
+  <MuiThemeProvider muiTheme={muiTheme}>
+    <div className="App-container">
+      <div className="App-header">
+        <img src={logo} className="App-header-logo" alt="logo" />
+        <div className="App-header-actions">
+          <FlatButton label="New" />
+          <FlatButton label="Invite" />
+          <FlatButton label="Send" />
         </div>
-      </MuiThemeProvider>
-    );
-  }
-}
+      </div>
+      <ShoppingList onAddItem={() => console.log(":)")} />
+    </div>
+  </MuiThemeProvider>
+);
 
 export default App;

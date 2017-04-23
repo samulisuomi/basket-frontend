@@ -1,9 +1,5 @@
-.NewItemRow {
-  width: 100%;
-}
-
 /* Override material default */
-#NewItemRow-textField {
+.NewItemRow-TextField {
   width: 100% !important;
 }
 
