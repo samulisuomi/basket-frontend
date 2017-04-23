@@ -1,43 +1,50 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addItem, toggleItem, editItem, deleteItem } from '../../actions';
 import './ShoppingList.css';
 
 import NewItemRow from '../NewItemRow/NewItemRow'
 import EditItemRow from '../EditItemRow/EditItemRow'
 
-class ShoppingList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      item: {
-        bought: false
-      }
+const mapStateToProps = (state) => {
+  return {
+    items: state.items
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAddItem: text => {
+      dispatch(addItem(text));
+    },
+    onToggleItem: id => {
+      dispatch(toggleItem(id));
+    },
+    onEditItem: (id, text) => {
+      dispatch(editItem(id, text));
+    },
+    onDeleteItem: (id) => {
+      dispatch(deleteItem(id));
     }
   }
-
-  tempHandleChange = (event) => {
-    this.setState({
-      item: {
-        bought: !this.state.item.bought
-      }
-    });
-  }
-
-  render() {
-    return (
-      <div className="ShoppingList">
-        <EditItemRow
-          onToggleItem={this.tempHandleChange}
-          item={this.state.item}
-        />
-        <NewItemRow onAddItem={this.props.onAddItem}/>
-      </div>
-    );
-  }
 }
 
-ShoppingList.propTypes = {
-  onAddItem: PropTypes.func.isRequired
-}
+const ShoppingList = (props) => (
+  <div className="ShoppingList">
+    {props.items.map(item => 
+      <EditItemRow
+        key={item.id}
+        onToggleItem={() => props.onToggleItem(item.id)}
+        onEditItem={props.onEditItem}
+        onDeleteItem={() => props.onDeleteItem(item.id)}
+        item={item}
+      />
+    )}
+    <NewItemRow onAddItem={props.onAddItem}/>
+  </div>
+);
 
-export default ShoppingList;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShoppingList);

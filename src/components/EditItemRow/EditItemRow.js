@@ -18,14 +18,19 @@ const EditItemRow = (props) => (
     </div>
     <div className="EditItemRow-TextField-container">
       <TextField
-        id="EditItemRow-TextField-todoprops"
+        id={`EditItemRow-TextField-${props.item.id}`}
         fullWidth={true}
         placeholder=""
-        // TODO: use CSS modules and define all the styles in CSS:
-        inputStyle={props.item.bought && {
-          'text-decoration': 'line-through',
-          color: 'gray'
+        value={props.item.text}
+        onChange={(event) => {
+          event.preventDefault();
+          props.onEditItem(props.item.id, event.target.value);
         }}
+        // TODO: use CSS modules and define all the styles in CSS:
+        inputStyle={props.item.bought ? {
+          textDecoration: 'line-through',
+          color: 'gray'
+        } : {}}
       />
     </div>
     <div className="EditItemRow-actions">
@@ -33,7 +38,7 @@ const EditItemRow = (props) => (
         <AccountCircle />
       </IconButton>
       <IconButton className="EditItemRow-button" tooltip="Comment">
-        {window.todochangethis && this.props.item.comments.length > 0
+        {props.item.comments.length > 0
           ?
             <Comment />
           : 
@@ -41,15 +46,17 @@ const EditItemRow = (props) => (
         }
       </IconButton>
       <IconButton className="EditItemRow-button" tooltip="Delete">
-        <Delete />
+        <Delete onTouchTap={props.onDeleteItem}/>
       </IconButton>
     </div>
   </div>
 );
 
 EditItemRow.propTypes = {
-  item: PropTypes.object,
-  onToggleItem: PropTypes.func
+  item: PropTypes.object.isRequired,
+  onToggleItem: PropTypes.func.isRequired,
+  onEditItem: PropTypes.func.isRequired,
+  onDeleteItem: PropTypes.func.isRequired
 }
 
 export default EditItemRow;
