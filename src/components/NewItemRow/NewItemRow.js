@@ -9,7 +9,7 @@ class NewItemRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textFieldValue: '',
+      textFieldValue: ''
     };
   }
 
@@ -22,6 +22,12 @@ class NewItemRow extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.onAddItem(this.state.textFieldValue);
+    this.setState({
+      textFieldValue: ''
+    });
+  }
+  
+  handleCancel = (event) => {
     this.setState({
       textFieldValue: ''
     });
@@ -46,7 +52,10 @@ class NewItemRow extends React.Component {
               primary={true}
               type="submit"
             />
-            <RaisedButton className="NewItemRow-button" label="Cancel" />
+            <RaisedButton
+              className="NewItemRow-button"
+              label="Cancel"
+              onTouchTap={this.handleCancel} />
           </div>
         </form>
       </div>

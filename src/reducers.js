@@ -1,39 +1,33 @@
 import { ADD_ITEM, TOGGLE_ITEM, EDIT_ITEM, DELETE_ITEM } from './actions';
 
-/*
- * TODO: Replace with more modular reducers:
- */
 const initialState = {
-  items: [{
-      id: 0,
-      bought: false,
-      text: 'Hello',
-      assigned: [],
-      comments: []
-    }
-  ],
+  items: [],
   users: [],
   shared: [],
   loggedInAs: null
 };
 
-/* TODO: Get ID from backend and use temp id until request finished.
- * (Would require new action to change tempIds to realIds).
- * Another way: use something like PouchDB.
+/* TODO: Get ID from backend and use a temp id until request finished.
+ * Would require new action to change tempIds to realIds.
+ * We could also utilize something like PouchDB.
  */
-let idCounter = initialState.items.reduce((previous, current) =>
-    Math.max(previous.id || -1, current.id)).id;
+let tempIdCounter = null;
 
 function itemsReducer(state = initialState, action) {
+  // Init the ID counter the first time the reducer is called:
+  if (tempIdCounter === null) {
+    tempIdCounter = state.items.reduce((previous, current) =>
+        Math.max(previous.id, current.id), {}).id || -1;
+  }
   switch (action.type) {
     case ADD_ITEM:
-      idCounter++;
+      tempIdCounter++;
       return {
         ...state,
         items: [
           ...state.items,
           {
-            id: idCounter,
+            id: tempIdCounter,
             text: action.text,
             bought: false,
             assigned: [],
