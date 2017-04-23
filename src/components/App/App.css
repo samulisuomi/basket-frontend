@@ -4,16 +4,6 @@
   padding: 24px;
 }
 
-.App-header {
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 24px;
-}
-
-.App-header-logo {
-  height: 48px;
-}
-
 .App-list {
   padding-top: 2rem;
 }

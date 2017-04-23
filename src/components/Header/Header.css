@@ -1,0 +1,9 @@
+.Header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 24px;
+}
+
+.Header-logo {
+  height: 48px;
+}

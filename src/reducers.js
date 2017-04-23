@@ -1,4 +1,10 @@
-import { ADD_ITEM, TOGGLE_ITEM, EDIT_ITEM, DELETE_ITEM } from './actions';
+import {
+  ADD_ITEM,
+  TOGGLE_ITEM,
+  EDIT_ITEM,
+  DELETE_ITEM,
+  NEW_LIST
+} from './actions';
 
 const initialState = {
   items: [],
@@ -63,6 +69,11 @@ function itemsReducer(state = initialState, action) {
       return {
         ...state,
         items: state.items.filter(item => item.id !== action.id)
+      };
+    case NEW_LIST:
+      return {
+        ...state,
+        items: []
       };
     default:
       return state

@@ -49,3 +49,9 @@ export const deleteItem = (id) => {
     id
   };
 };
+
+export const newList = () => {
+  return {
+    type: NEW_LIST
+  };
+};
