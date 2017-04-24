@@ -1,3 +1,7 @@
+/**
+ * App lays out the top-level app structure.
+ */
+
 import React from 'react';
 import './App.css';
 

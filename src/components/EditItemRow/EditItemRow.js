@@ -1,3 +1,8 @@
+/**
+ * EditItemRow allows the user to edit their items.
+ * (TODO: Update description once assign+comment works) It manages its own UI state but is otherwise a presentational component. 
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import './EditItemRow.css';

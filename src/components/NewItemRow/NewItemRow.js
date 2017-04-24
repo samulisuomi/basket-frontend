@@ -1,3 +1,8 @@
+/**
+ * NewItemRow allows the user to enter new items to the list.
+ * It manages its own UI state but is otherwise a presentational component. 
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types'
 import './NewItemRow.css';

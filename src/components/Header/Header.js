@@ -1,3 +1,7 @@
+/**
+ * Header TODO separate other than logo + store
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { newList } from '../../actions';

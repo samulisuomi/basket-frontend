@@ -1,3 +1,7 @@
+/**
+ * ShoppingList is a container component that lays out a list of items and functionality to add more of them.
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { addItem, toggleItem, editItem, deleteItem } from '../../actions';
