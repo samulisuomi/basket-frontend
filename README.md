@@ -1,6 +1,11 @@
 # basket-frontend
 
-basket-frontend
+Shopping list manager built with React, Redux and Material-UI
+
+## Future improvements:
+* Use Immutable to remove Object.assigns and to boost performance.
+* Split actions and reducers to domain specific files.
+* Use CSS Modules (or similar) to have non-global styles. (?)
 
 # Development
 

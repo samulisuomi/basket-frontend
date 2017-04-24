@@ -11,7 +11,6 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 
 const mapStateToProps = (state) => {
   return {
@@ -27,40 +26,74 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
+// Dialog keys:
+const NEW_LIST_DIALOG = 'NEW_LIST_DIALOG';
+const INVITE_USERS_DIALOG = 'INVITE_USERS_DIALOG';
+const SEND_EMAIL_DIALOG = 'SEND_EMAIL_DIALOG';
+
+const getInitialDialogsOpenState = () => {
+  return {
+      NEW_LIST_DIALOG: false,
+      INVITE_USERS_DIALOG: false,
+      SEND_EMAIL_DIALOG: false
+  };
+}
+
+/**
+ * Returns new open dialog state where all the other dialogs are not open except openDialogId.
+ * @param {string} openDialogId 
+ */
+const getDialogsOpenState = (openDialogId) => {
+  let dialogsOpen = getInitialDialogsOpenState();
+  if (openDialogId && dialogsOpen[openDialogId] !== undefined) {
+    dialogsOpen[openDialogId] = true;
+  }
+  console.log(JSON.stringify(dialogsOpen));
+  return dialogsOpen;
+};
+
 class Header extends React.Component {
-  // TODO: a) Each menuitem its own component OR general dialog
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      dialogsOpen: getInitialDialogsOpenState()
     }
   }
 
-  handleOpen = () => {
-    this.setState({open: true});
+  handleOpen = (dialogId) => {
+    this.setState({
+      ...this.state,
+      dialogsOpen: getDialogsOpenState(dialogId)
+    });
   };
 
-  handleClose = (confirmed) => {
-    this.setState({open: false});
-    if (confirmed) {
-      this.props.onNewList();
+  handleClose = (dialog, confirmed, onConfirm) => {
+    this.setState({
+      ...this.state,
+      dialogsOpen: getInitialDialogsOpenState()
+    });
+    if (confirmed && onConfirm) {
+      onConfirm();
     }
   };
-  render() {
-    const actions = [
+
+  getDialogActions = (confirmLabel, onConfirm) => {
+    return [
       <FlatButton
         label="Cancel"
         primary={true}
         onTouchTap={() => this.handleClose(false)}
       />,
       <FlatButton
-        label="Create new"
+        label={confirmLabel}
         primary={true}
         keyboardFocused={true}
-        onTouchTap={() => this.handleClose(true)}
-      />,
-    ];
+        onTouchTap={() => this.handleClose(true, onConfirm)}
+      />
+    ]
+  }
 
+  render() {
     return (
       <div className="Header">
         <img src={logo} className="Header-logo" alt="logo" />
@@ -69,19 +102,41 @@ class Header extends React.Component {
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
           targetOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-          <MenuItem primaryText="New list" onTouchTap={this.handleOpen}/>
-          <MenuItem primaryText="Invite users" />
-          <MenuItem primaryText="Send via email" />
+          <MenuItem primaryText="New list" onTouchTap={() => this.handleOpen(NEW_LIST_DIALOG)}/>
+          <MenuItem primaryText="Invite users" onTouchTap={() => this.handleOpen(INVITE_USERS_DIALOG)}/>
+          <MenuItem primaryText="Send via email" onTouchTap={() => this.handleOpen(SEND_EMAIL_DIALOG)}/>
           <MenuItem primaryText="Sign out" />
         </IconMenu>
         <Dialog
           title="Create new list?"
-          actions={actions}
+          actions={this.getDialogActions('Create new', this.props.onNewList)}
           modal={false}
-          open={this.state.open}
+          open={this.state.dialogsOpen.NEW_LIST_DIALOG}
           onRequestClose={this.handleClose}
         >
           All current data will be cleared.
+        </Dialog>
+        <Dialog
+          title="Invite users"
+          actions={this.getDialogActions('Invite', this.props.onInviteUsers)}
+          modal={false}
+          open={this.state.dialogsOpen.INVITE_USERS_DIALOG}
+          onRequestClose={this.handleClose}
+        >
+          Invite other users to this shopping list:
+
+          <small>The users will receive an email notification.</small>
+        </Dialog>
+        <Dialog
+          title="Send via email"
+          actions={this.getDialogActions('Send', null)}
+          modal={false}
+          open={this.state.dialogsOpen.SEND_EMAIL_DIALOG}
+          onRequestClose={this.handleClose}
+        >
+          Send a copy of this shopping list to an email address:
+
+          <small>Sending emails directly from Basket is not yet supported. Hitting Send will open your own email app where you can send the message.</small>
         </Dialog>
       </div>
     );

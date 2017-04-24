@@ -65,6 +65,6 @@ class NewItemRow extends React.Component {
 
 NewItemRow.propTypes = {
   onAddItem: PropTypes.func.isRequired
-}
+};
 
 export default NewItemRow;

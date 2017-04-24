@@ -11,7 +11,7 @@ import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import Comment from 'material-ui/svg-icons/communication/comment';
 import ModeComment from 'material-ui/svg-icons/editor/mode-comment';
 
-// TODO: Fix bug "Warning: TextField is changing a controlled input of type text to be uncontrolled."
+// TODO: Fix warning "Warning: TextField is changing a controlled input of type text to be uncontrolled."
 const EditItemRow = (props) => (
   <div className="EditItemRow">
     <div className="EditItemRow-checkbox-container">
