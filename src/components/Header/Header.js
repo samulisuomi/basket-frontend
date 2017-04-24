@@ -12,6 +12,9 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
+import InviteUsers from './InviteUsers'
+import SendEmail from './SendEmail'
+
 const mapStateToProps = (state) => {
   return {
     items: state.items
@@ -48,7 +51,6 @@ const getDialogsOpenState = (openDialogId) => {
   if (openDialogId && dialogsOpen[openDialogId] !== undefined) {
     dialogsOpen[openDialogId] = true;
   }
-  console.log(JSON.stringify(dialogsOpen));
   return dialogsOpen;
 };
 
@@ -56,7 +58,8 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dialogsOpen: getInitialDialogsOpenState()
+      dialogsOpen: getInitialDialogsOpenState(),
+      receiverEmail: null
     }
   }
 
@@ -67,7 +70,7 @@ class Header extends React.Component {
     });
   };
 
-  handleClose = (dialog, confirmed, onConfirm) => {
+  handleClose = (confirmed, onConfirm) => {
     this.setState({
       ...this.state,
       dialogsOpen: getInitialDialogsOpenState()
@@ -112,7 +115,7 @@ class Header extends React.Component {
           actions={this.getDialogActions('Create new', this.props.onNewList)}
           modal={false}
           open={this.state.dialogsOpen.NEW_LIST_DIALOG}
-          onRequestClose={this.handleClose}
+          onRequestClose={() => this.handleClose(false)}
         >
           All current data will be cleared.
         </Dialog>
@@ -121,22 +124,22 @@ class Header extends React.Component {
           actions={this.getDialogActions('Invite', this.props.onInviteUsers)}
           modal={false}
           open={this.state.dialogsOpen.INVITE_USERS_DIALOG}
-          onRequestClose={this.handleClose}
+          onRequestClose={() => this.handleClose(false)}
         >
-          Invite other users to this shopping list:
-
-          <small>The users will receive an email notification.</small>
+          <InviteUsers />
         </Dialog>
         <Dialog
           title="Send via email"
-          actions={this.getDialogActions('Send', null)}
+          actions={this.getDialogActions('Send', () => console.log("TODO, mailto " + this.state.receiverEmail))}
           modal={false}
           open={this.state.dialogsOpen.SEND_EMAIL_DIALOG}
-          onRequestClose={this.handleClose}
+          onRequestClose={() => this.handleClose(false)}
         >
-          Send a copy of this shopping list to an email address:
-
-          <small>Sending emails directly from Basket is not yet supported. Hitting Send will open your own email app where you can send the message.</small>
+          <SendEmail onReceiverEmailChanged={(email) => this.setState({
+              ...this.state,
+              receiverEmail: email
+            })}
+          />
         </Dialog>
       </div>
     );

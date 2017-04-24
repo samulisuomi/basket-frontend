@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .EditItemRow-TextField-container {
-  flex: 1 0 256px;
+  flex: 1 0 192px;
 }
