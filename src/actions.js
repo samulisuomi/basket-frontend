@@ -9,7 +9,8 @@ export const UNASSIGN_ITEM = 'UNASSIGN_ITEM';
 export const ADD_COMMENT = 'ADD_COMMENT';
 export const DELETE_COMMENT = 'REMOVE_COMMENT';
 export const NEW_LIST = 'NEW_LIST';
-export const INVITE_USER = 'INVITE_USER';
+export const ADD_USER = 'ADD_USER';
+export const REMOVE_USER = 'REMOVE_USER';
 
 // Other constants:
 
@@ -47,5 +48,19 @@ export const deleteItem = (id) => {
 export const newList = () => {
   return {
     type: NEW_LIST
+  };
+};
+
+export const addUser = (user) => {
+  return {
+    type: ADD_USER,
+    user
+  };
+};
+
+export const removeUser = (user) => {
+  return {
+    type: REMOVE_USER,
+    user
   };
 };

@@ -3,12 +3,17 @@ import {
   TOGGLE_ITEM,
   EDIT_ITEM,
   DELETE_ITEM,
-  NEW_LIST
+  NEW_LIST,
+  ADD_USER,
+  REMOVE_USER
 } from './actions';
+
+// TODO: Real authentication:
+const thisUser = "you@example.com";
 
 const initialState = {
   items: [],
-  users: [],
+  users: [thisUser],
   shared: [],
   loggedInAs: null
 };
@@ -75,6 +80,22 @@ function itemsReducer(state = initialState, action) {
         ...state,
         items: []
       };
+    case ADD_USER:
+      return {
+        ...state,
+        // Do not add user if already added. TODO: Inform user about invalid action:
+        users: (state.users.indexOf(action.user) === -1)
+          ? state.users.concat([action.user])
+          : state.users
+      }
+    case REMOVE_USER:
+      return {
+        ...state,
+        // Prevent removing the own user. TODO: Inform user about invalid action:
+        users: (action.user !== thisUser)
+          ? state.users.filter(user => user !== action.user)
+          : state.users
+      }
     default:
       return state
   }

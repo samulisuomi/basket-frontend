@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
   return {
     items: state.items
   }
-}
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(deleteItem(id));
     }
   }
-}
+};
 
 const ShoppingList = (props) => (
   <div className="ShoppingList">
