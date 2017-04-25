@@ -7,6 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
+import InviteUsers from './InviteUsers'
+import SendEmail from './SendEmail'
+import { getInitialDialogsOpenState, getDialogsOpenState } from '../../helpers/dialogState'
+
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -15,38 +19,16 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
-import InviteUsers from './InviteUsers'
-import SendEmail from './SendEmail'
-
-// Dialog keys:
+// Dialog IDs:
 const NEW_LIST_DIALOG = 'NEW_LIST_DIALOG';
 const INVITE_USERS_DIALOG = 'INVITE_USERS_DIALOG';
 const SEND_EMAIL_DIALOG = 'SEND_EMAIL_DIALOG';
-
-const getInitialDialogsOpenState = () => {
-  return {
-      NEW_LIST_DIALOG: false,
-      INVITE_USERS_DIALOG: false,
-      SEND_EMAIL_DIALOG: false
-  };
-};
-
-/**
- * Returns new open dialog state where all the other dialogs are not open except openDialogId.
- * @param {string} openDialogId 
- */
-const getDialogsOpenState = (openDialogId) => {
-  let dialogsOpen = getInitialDialogsOpenState();
-  if (openDialogId && dialogsOpen[openDialogId] !== undefined) {
-    dialogsOpen[openDialogId] = true;
-  }
-  return dialogsOpen;
-};
+const dialogIds = [NEW_LIST_DIALOG, INVITE_USERS_DIALOG, SEND_EMAIL_DIALOG];
 
 /**
  * Formats the items to an mailto url and changes window.location to it.
  * @param {string} email 
- * @param {Array} items 
+ * @param {Array} items
  */
 const mailtoRedirect = (email, items) => {
   const crlf = '%0D%0A';
@@ -58,7 +40,7 @@ class HeaderOptions extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      dialogsOpen: getInitialDialogsOpenState(),
+      dialogsOpen: getInitialDialogsOpenState(...dialogIds),
       receiverEmail: null
     }
   }
@@ -66,14 +48,14 @@ class HeaderOptions extends React.Component {
   handleOpen = (dialogId) => {
     this.setState({
       ...this.state,
-      dialogsOpen: getDialogsOpenState(dialogId)
+      dialogsOpen: getDialogsOpenState(dialogId, ...dialogIds)
     });
   };
 
   handleClose = (confirmed, onConfirm) => {
     this.setState({
       ...this.state,
-      dialogsOpen: getInitialDialogsOpenState()
+      dialogsOpen: getInitialDialogsOpenState(...dialogIds)
     });
     if (confirmed && onConfirm) {
       onConfirm();

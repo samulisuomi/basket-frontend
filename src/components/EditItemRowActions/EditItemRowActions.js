@@ -1,11 +1,10 @@
 /**
- * EditItemRow allows the user to edit their items.
- * TODO: It manages its own UI state but is otherwise a presentational component. 
+ * EditItemRowActions 
+ * TODO:
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import './EditItemRow.css';
 
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';

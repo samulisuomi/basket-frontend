@@ -8,7 +8,7 @@ import { newList, addUser, removeUser } from '../../actions';
 import logo from './basket-logo.svg';
 import './Header.css';
 
-import HeaderOptions from './HeaderOptions/HeaderOptions'
+import HeaderOptions from '../HeaderOptions/HeaderOptions'
 
 const mapStateToProps = (state) => {
   return {

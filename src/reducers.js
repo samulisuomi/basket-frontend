@@ -1,3 +1,7 @@
+/**
+ * Redux reducers.
+ */
+
 import {
   ADD_ITEM,
   TOGGLE_ITEM,
