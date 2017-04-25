@@ -43,6 +43,17 @@ const getDialogsOpenState = (openDialogId) => {
   return dialogsOpen;
 };
 
+/**
+ * Formats the items to an mailto url and changes window.location to it.
+ * @param {string} email 
+ * @param {Array} items 
+ */
+const mailtoRedirect = (email, items) => {
+  const crlf = '%0D%0A';
+  const formattedItems = items.map(item => encodeURIComponent(item.bought ? '☑ ' : '☐ ' + item.text) + crlf).join('');
+  window.location = `mailto:${encodeURIComponent(email)}?subject=Shopping%20List%20from%20Basket&body=${formattedItems}`;
+}
+
 class HeaderOptions extends React.Component {
   constructor(props) {
     super(props);
@@ -135,7 +146,7 @@ class HeaderOptions extends React.Component {
         </Dialog>
         <Dialog
           title="Send via email"
-          actions={this.getDialogActions('Send', () => console.log("TODO, mailto " + this.state.receiverEmail))}
+          actions={this.getDialogActions('Send', () => mailtoRedirect(this.state.receiverEmail, this.props.items))}
           autoScrollBodyContent={true}
           modal={false}
           open={this.state.dialogsOpen.SEND_EMAIL_DIALOG}
@@ -156,7 +167,8 @@ HeaderOptions.propTypes = {
   onNewList: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
   onAddUser: PropTypes.func.isRequired,
-  onRemoveUser: PropTypes.func.isRequired
+  onRemoveUser: PropTypes.func.isRequired,
+  items: PropTypes.array.isRequired
 }
 
 export default HeaderOptions;

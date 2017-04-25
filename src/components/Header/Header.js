@@ -12,6 +12,7 @@ import HeaderOptions from './HeaderOptions/HeaderOptions'
 
 const mapStateToProps = (state) => {
   return {
+    items: state.items,
     users: state.users
   }
 };
@@ -39,6 +40,7 @@ const Header = (props) => {
         users={props.users}
         onAddUser={props.onAddUser}
         onRemoveUser={props.onRemoveUser}
+        items={props.items}
       />
     </div>
   );
