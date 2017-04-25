@@ -36,6 +36,7 @@ const EditItemRow = (props) => (
       onDeleteItem={props.onDeleteItem}
       onAssignItem={props.onAssignItem}
       onUnassignItem={props.onUnassignItem}
+      users={props.users}
     />
   </div>
 );
@@ -49,6 +50,7 @@ EditItemRow.propTypes = {
   onUnassignItem: PropTypes.func.isRequired,
   onAddComment: PropTypes.func,
   onRemoveComment: PropTypes.func,
+  users: PropTypes.array.isRequired
 }
 
 export default EditItemRow;

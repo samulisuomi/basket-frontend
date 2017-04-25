@@ -12,7 +12,8 @@ import EditItemRow from '../EditItemRow/EditItemRow'
 
 const mapStateToProps = (state) => {
   return {
-    items: state.items
+    items: state.items,
+    users: state.users
   }
 };
 
@@ -50,6 +51,7 @@ const ShoppingList = (props) => (
         onAssignItem={props.onAssignItem}
         onUnassignItem={props.onUnassignItem}
         item={item}
+        users={props.users}
       />
     )}
     <NewItemRow onAddItem={props.onAddItem}/>

@@ -35,7 +35,6 @@ let tempCommentIdCounter = null;
 
 // Returns the object with maximum ID number from the array, or -1:
 const initIdCounter = (arrayOfObjectsWithIdProperty) => {
-  console.log(arrayOfObjectsWithIdProperty)
   return arrayOfObjectsWithIdProperty.reduce((previous, current) =>
       Math.max(previous.id, current.id), {}).id || -1;
 }
