@@ -108,7 +108,7 @@ class HeaderOptions extends React.Component {
           <MenuItem primaryText="New list" onTouchTap={() => this.handleOpen(NEW_LIST_DIALOG)}/>
           <MenuItem primaryText="Invite users" onTouchTap={() => this.handleOpen(INVITE_USERS_DIALOG)}/>
           <MenuItem primaryText="Send via email" onTouchTap={() => this.handleOpen(SEND_EMAIL_DIALOG)}/>
-          <MenuItem primaryText="Sign out" />
+          <MenuItem primaryText="Sign out" onTouchTap={() => window.location = "https://www.google.com/" }/>
         </IconMenu>
         <Dialog
           title="Create new list?"
@@ -122,6 +122,7 @@ class HeaderOptions extends React.Component {
         <Dialog
           title="Invite users"
           actions={this.getDialogCloseAction()}
+          autoScrollBodyContent={true}
           modal={false}
           open={this.state.dialogsOpen.INVITE_USERS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
@@ -135,6 +136,7 @@ class HeaderOptions extends React.Component {
         <Dialog
           title="Send via email"
           actions={this.getDialogActions('Send', () => console.log("TODO, mailto " + this.state.receiverEmail))}
+          autoScrollBodyContent={true}
           modal={false}
           open={this.state.dialogsOpen.SEND_EMAIL_DIALOG}
           onRequestClose={() => this.handleClose(false)}

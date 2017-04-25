@@ -52,12 +52,12 @@ class InviteUsers extends React.Component {
       <div>
         <p>Invite users to this shopping list.</p>
         <ul>
-          {this.props.users.map(user => {
+          {this.props.users.map((user, index) => {
             return (
               <li key={user}>
-                {user} 
+                {user}
                 <span
-                  style={{cursor: 'pointer', marginLeft: '8px', color: 'red'}}
+                  style={{cursor: index !== 0 ? 'pointer' : 'default', marginLeft: '8px', color: index !== 0 ? 'red': 'gray'}}
                   onTouchTap={() => this.props.onRemoveUser(user)}
                 >
                   ×
