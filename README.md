@@ -1,11 +1,16 @@
 # basket-frontend
 
-Shopping list manager built with React, Redux and Material-UI
+Shopping list manager built with React, Redux and Material-UI. Deployed at http://sasuomi.github.io/basket-frontend
 
-## Future improvements:
-* Use Immutable to remove Object.assigns and to boost performance.
+## Browser support
+* Should work and look fine in latest versions of Chrome, Firefox, Safari, Edge and IE11.
+* Should be usable in IE9+ but the layout will look a bit odd due to the usage of flexbox.
+
+## Future improvements
 * Split actions and reducers to domain specific files.
-* Use CSS Modules (or similar) to have non-global styles. (?)
+* Maybe use CSS Modules (or similar) to have non-global styles. Currently "namespacing" is done manually.
+* Maybe use Immutable (to remove Object.assigns and to boost performance).
+* Add a backend service and tweak/expand parts with TODO comments to utilize one.
 
 # Development
 
