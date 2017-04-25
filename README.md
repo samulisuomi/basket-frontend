@@ -14,6 +14,15 @@ Shopping list manager built with React, Redux and Material-UI. Deployed at http:
 
 # Development
 
+## tl;dr
+
+`yarn install`
+`yarn start`
+`yarn test`
+`yarn deploy`
+
+## Introduction
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
