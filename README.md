@@ -16,10 +16,10 @@ Shopping list manager built with React, Redux and Material-UI. Deployed at http:
 
 ## tl;dr
 
-`yarn install`
-`yarn start`
-`yarn test`
-`yarn deploy`
+* `yarn install`
+* `yarn start`
+* `yarn test`
+* `yarn deploy`
 
 ## Introduction
 
