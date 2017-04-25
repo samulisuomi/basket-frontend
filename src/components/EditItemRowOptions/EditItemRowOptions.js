@@ -61,21 +61,12 @@ class EditItemRowActions extends React.Component {
         <IconButton tooltip="Assign" onTouchTap={() => this.handleOpen(ASSIGN_USERS_DIALOG)}>
           <AccountCircle />
         </IconButton>
-        <IconButton tooltip="Comment">
+        <IconButton tooltip="Comment" onTouchTap={() => this.handleOpen(COMMENTS_DIALOG)}>
           {this.props.item.comments.length > 0 ? <Comment /> : <ModeComment />}
         </IconButton>
-        <IconButton tooltip="Delete">
-          <Delete onTouchTap={this.props.onDeleteItem}/>
+        <IconButton tooltip="Delete" onTouchTap={this.props.onDeleteItem}>
+          <Delete />
         </IconButton>
-        <Dialog
-          title="Assign to users"
-          actions={this.getDialogCloseAction()}
-          modal={false}
-          open={this.state.dialogsOpen.ASSIGN_USERS_DIALOG}
-          onRequestClose={() => this.handleClose(false)}
-        >
-          Assign users
-        </Dialog>
         <Dialog
           title={`Assign "${this.props.item.text}" to users`}
           actions={this.getDialogCloseAction()}
@@ -89,7 +80,7 @@ class EditItemRowActions extends React.Component {
           </p>
         </Dialog>
         <Dialog
-          title="Comments"
+          title={`Comments about ${this.props.item.text}`}
           actions={this.getDialogCloseAction()}
           autoScrollBodyContent={true}
           modal={false}

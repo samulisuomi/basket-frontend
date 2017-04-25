@@ -27,7 +27,6 @@ const EditItemRow = (props) => (
           event.preventDefault();
           props.onEditItem(props.item.id, event.target.value);
         }}
-        // TODO: use CSS modules and define all the styles in CSS:
         inputStyle={props.item.bought ? {
           textDecoration: 'line-through',
           color: 'gray'
