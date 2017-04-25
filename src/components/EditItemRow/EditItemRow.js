@@ -1,5 +1,5 @@
 /**
- * EditItemRow displays one item as a row that can be edited. 
+ * EditItemRow displays editable item text field along with its options.
  */
 
 import React from 'react';
@@ -11,7 +11,6 @@ import EditItemRowOptions from '../EditItemRowOptions/EditItemRowOptions'
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
 
-// TODO: Fix warning "Warning: TextField is changing a controlled input of type text to be uncontrolled."
 const EditItemRow = (props) => (
   <div className="EditItemRow">
     <div className="EditItemRow-checkbox-container">
@@ -24,7 +23,6 @@ const EditItemRow = (props) => (
         placeholder=""
         value={props.item.text}
         onChange={(event) => {
-          event.preventDefault();
           props.onEditItem(props.item.id, event.target.value);
         }}
         inputStyle={props.item.bought ? {

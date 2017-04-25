@@ -27,11 +27,11 @@ export const addItem = (text) => {
   };
 };
 
-export const editItem = (id, newText) => {
+export const editItem = (id, text) => {
   return {
     type: EDIT_ITEM,
     id,
-    newText
+    text
   };
 };
 
