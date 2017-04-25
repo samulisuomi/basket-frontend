@@ -7,6 +7,10 @@ import {
   TOGGLE_ITEM,
   EDIT_ITEM,
   DELETE_ITEM,
+  ASSIGN_ITEM,
+  UNASSIGN_ITEM,
+  ADD_COMMENT,
+  DELETE_COMMENT,
   NEW_LIST,
   ADD_USER,
   REMOVE_USER
@@ -22,27 +26,40 @@ const initialState = {
   loggedInAs: null
 };
 
-/* TODO: Get ID from backend and use a temp id until request finished.
+/* TODO: Get IDs from backend and use a temp id until request finished.
  * Would require new action to change tempIds to realIds.
- * We could also utilize something like PouchDB.
+ * We could also utilize something like PouchDB?
  */
-let tempIdCounter = null;
+let tempItemIdCounter = null;
+let tempCommentIdCounter = null;
 
+// Returns the object with maximum ID number from the array, or -1:
+const initIdCounter = (arrayOfObjectsWithIdProperty) => {
+  console.log(arrayOfObjectsWithIdProperty)
+  return arrayOfObjectsWithIdProperty.reduce((previous, current) =>
+      Math.max(previous.id, current.id), {}).id || -1;
+}
+
+// TODO: Separate reducers
 function itemsReducer(state = initialState, action) {
-  // Init the ID counter the first time the reducer is called:
-  if (tempIdCounter === null) {
-    tempIdCounter = state.items.reduce((previous, current) =>
-        Math.max(previous.id, current.id), {}).id || -1;
+  // Init the ID counters the first time the reducer is called:
+  if (tempItemIdCounter === null) {
+    tempItemIdCounter = initIdCounter(state.items);
+  }
+  if (tempCommentIdCounter === null) {
+    // First concat all the comments from all the items:
+    const allComments = state.items.map(item => item.comments).reduce((previous, current) => previous.concat(current), []);
+    tempCommentIdCounter = initIdCounter(allComments);
   }
   switch (action.type) {
     case ADD_ITEM:
-      tempIdCounter++;
+      tempItemIdCounter++;
       return {
         ...state,
         items: [
           ...state.items,
           {
-            id: tempIdCounter,
+            id: tempItemIdCounter,
             text: action.text,
             bought: false,
             assigned: [],
@@ -79,6 +96,60 @@ function itemsReducer(state = initialState, action) {
         ...state,
         items: state.items.filter(item => item.id !== action.id)
       };
+    case ASSIGN_ITEM:
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if (item.id === action.itemId) {
+            return Object.assign({}, item, {
+              // Do not add user if already added. 
+              assigned: (item.assigned.indexOf(action.user) === -1)
+                ? item.assigned.concat([action.user])
+                : item.assigned
+            });
+          }
+          return item;
+        })
+      }
+    case UNASSIGN_ITEM:
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if (item.id === action.itemId) {
+            return Object.assign({}, item, {
+              assigned: item.assigned.filter(user => user !== action.user)
+            });
+          }
+          return item;
+        })
+      }
+    case ADD_COMMENT:
+      tempCommentIdCounter++;
+      return {
+        ...state,
+        items: state.items.map(item => {
+          if (item.id === action.itemId) {
+            return Object.assign({}, item, {
+              comments: item.comments.concat([{
+                id: tempCommentIdCounter,
+                user: action.user,
+                timestamp: new Date(),
+                text: action.text
+              }])
+            });
+          }
+          return item;
+        })
+      };
+    case DELETE_COMMENT:
+      return {
+        ...state,
+        items: state.items.map(item =>
+          Object.assign({}, item, {
+            comments: item.comments.filter(comment => comment.id !== action.commentId)
+          })
+        )
+      }
     case NEW_LIST:
       return {
         ...state,

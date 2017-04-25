@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem, toggleItem, editItem, deleteItem } from '../../actions';
+import { addItem, toggleItem, editItem, deleteItem, assignItem, unassignItem } from '../../actions';
 import './ShoppingList.css';
 
 import NewItemRow from '../NewItemRow/NewItemRow'
@@ -29,6 +29,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDeleteItem: (id) => {
       dispatch(deleteItem(id));
+    },
+    onAssignItem: (itemId, user) => {
+      dispatch(assignItem(itemId, user));
+    },
+    onUnassignItem: (itemId, user) => {
+      dispatch(unassignItem(itemId, user));
     }
   }
 };
@@ -41,6 +47,8 @@ const ShoppingList = (props) => (
         onToggleItem={() => props.onToggleItem(item.id)}
         onEditItem={props.onEditItem}
         onDeleteItem={() => props.onDeleteItem(item.id)}
+        onAssignItem={props.onAssignItem}
+        onUnassignItem={props.onUnassignItem}
         item={item}
       />
     )}

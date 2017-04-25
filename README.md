@@ -8,8 +8,9 @@ Shopping list manager built with React, Redux and Material-UI. Deployed at http:
 
 ## Future improvements
 * Split actions and reducers to domain specific files.
-* Maybe use CSS Modules (or similar) to have non-global styles. Currently "namespacing" is done manually.
+* Maybe use CSS Modules (or similar) to have non-global styles. Currently namespacing is done manually.
 * Maybe use Immutable (to remove Object.assigns and to boost performance).
+* Code using dialogs could be improved.
 * Add a backend service and tweak/expand parts with TODO comments to utilize one.
 
 # Development

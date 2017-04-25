@@ -1,3 +1,7 @@
+/**
+ * SendEmail displays a view for inputting an email address.
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';

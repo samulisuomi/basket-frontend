@@ -49,6 +49,38 @@ export const deleteItem = (id) => {
   };
 };
 
+export const assignItem = (itemId, user) => {
+  return {
+    type: ASSIGN_ITEM,
+    itemId,
+    user
+  };
+};
+
+export const unassignItem = (itemId, user) => {
+  return {
+    type: UNASSIGN_ITEM,
+    itemId,
+    user
+  };
+};
+
+export const addComment = (itemId, user, text) => {
+  return {
+    type: ADD_COMMENT,
+    itemId,
+    user,
+    text
+  };
+};
+
+export const deleteComment = (commentId) => {
+  return {
+    type: DELETE_COMMENT,
+    commentId
+  };
+};
+
 export const newList = () => {
   return {
     type: NEW_LIST
@@ -68,3 +100,4 @@ export const removeUser = (user) => {
     user
   };
 };
+

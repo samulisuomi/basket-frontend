@@ -1,3 +1,7 @@
+/**
+ * InviteUsers allows adding new users to the shopping list.
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 

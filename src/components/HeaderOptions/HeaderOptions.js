@@ -1,7 +1,6 @@
 /**
- * HeaderOptions displays a dropdown list of options.
- * It manages its own UI state and can open an email app with mailto href
- * but is otherwise a presentational component.
+ * HeaderOptions displays a dropdown list of options for the app.
+ * It manages its own UI state such as the dialogs and can open an email app with mailto href.
  */
 
 import React from 'react';

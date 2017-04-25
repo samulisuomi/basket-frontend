@@ -1,13 +1,12 @@
 /**
- * EditItemRow allows the user to edit their items.
- * TODO: It manages its own UI state but is otherwise a presentational component. 
+ * EditItemRow displays one item as a row that can be edited. 
  */
 
 import React from 'react';
 import PropTypes from 'prop-types';
 import './EditItemRow.css';
 
-import EditItemRowActions from '../EditItemRowActions/EditItemRowActions'
+import EditItemRowOptions from '../EditItemRowOptions/EditItemRowOptions'
 
 import TextField from 'material-ui/TextField';
 import Checkbox from 'material-ui/Checkbox';
@@ -35,7 +34,12 @@ const EditItemRow = (props) => (
         } : {}}
       />
     </div>
-    <EditItemRowActions item={props.item} onDeleteItem={props.onDeleteItem} />
+    <EditItemRowOptions
+      item={props.item}
+      onDeleteItem={props.onDeleteItem}
+      onAssignItem={props.onAssignItem}
+      onUnassignItem={props.onUnassignItem}
+    />
   </div>
 );
 
@@ -43,7 +47,11 @@ EditItemRow.propTypes = {
   item: PropTypes.object.isRequired,
   onToggleItem: PropTypes.func.isRequired,
   onEditItem: PropTypes.func.isRequired,
-  onDeleteItem: PropTypes.func.isRequired
+  onDeleteItem: PropTypes.func.isRequired,
+  onAssignItem: PropTypes.func.isRequired,
+  onUnassignItem: PropTypes.func.isRequired,
+  onAddComment: PropTypes.func,
+  onRemoveComment: PropTypes.func,
 }
 
 export default EditItemRow;
