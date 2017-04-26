@@ -6,9 +6,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { getInitialDialogsOpenState, getDialogsOpenState } from '../../helpers/dialogState'
+import { getInitialDialogsOpenState, getDialogsOpenState } from '../../helpers/dialogState';
 
-import AssignUsers from './AssignUsers'
+import AssignUsers from './AssignUsers';
+import Comments from './Comments';
 
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -93,7 +94,12 @@ class EditItemRowActions extends React.Component {
           open={this.state.dialogsOpen.COMMENTS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
         >
-          Comments
+          <Comments
+            comments={this.props.item.comments}
+            onAddComment={this.props.onAddComment}
+            onDeleteComment={this.props.onDeleteComment}
+            loggedInAs={this.props.loggedInAs}
+          />
         </Dialog>
       </div>
     );
@@ -104,10 +110,11 @@ EditItemRowActions.propTypes = {
   item: PropTypes.object.isRequired,
   onAssignItem: PropTypes.func.isRequired,
   onUnassignItem: PropTypes.func.isRequired,
-  onAddComment: PropTypes.func,
-  onRemoveComment: PropTypes.func,
+  onAddComment: PropTypes.func.isRequired,
+  onDeleteComment: PropTypes.func.isRequired,
   onDeleteItem: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
+  users: PropTypes.array.isRequired,
+  loggedInAs: PropTypes.string.isRequired
 }
 
 export default EditItemRowActions;

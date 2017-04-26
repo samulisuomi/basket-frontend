@@ -4,7 +4,16 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { addItem, toggleItem, editItem, deleteItem, assignItem, unassignItem } from '../../actions';
+import {
+  addItem,
+  toggleItem,
+  editItem,
+  deleteItem,
+  assignItem,
+  unassignItem,
+  addComment,
+  deleteComment
+} from '../../actions';
 import './ShoppingList.css';
 
 import NewItemRow from '../NewItemRow/NewItemRow'
@@ -13,7 +22,8 @@ import EditItemRow from '../EditItemRow/EditItemRow'
 const mapStateToProps = (state) => {
   return {
     items: state.items,
-    users: state.users
+    users: state.users,
+    loggedInAs: state.loggedInAs
   }
 };
 
@@ -36,6 +46,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     onUnassignItem: (itemId, user) => {
       dispatch(unassignItem(itemId, user));
+    },
+    onAddComment: (itemId, user, text) => {
+      dispatch(addComment(itemId, user, text));
+    },
+    onDeleteComment: (itemId, user) => {
+      dispatch(deleteComment(itemId, user));
     }
   }
 };
@@ -50,8 +66,11 @@ const ShoppingList = (props) => (
         onDeleteItem={() => props.onDeleteItem(item.id)}
         onAssignItem={(user) => props.onAssignItem(item.id, user)}
         onUnassignItem={(user) => props.onUnassignItem(item.id, user)}
+        onAddComment={(user) => props.onAddComment(item.id, user)}
+        onDeleteComment={(user) => props.onDeleteComment(item.id, user)}
         item={item}
         users={props.users}
+        loggedInAs={props.loggedInAs}
       />
     )}
     <NewItemRow onAddItem={props.onAddItem}/>

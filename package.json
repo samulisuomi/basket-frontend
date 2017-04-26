@@ -5,8 +5,11 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "material-ui": "^0.17.4",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
+    "react-moment": "^0.2.2",
     "react-redux": "^5.0.4",
     "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.6.0"

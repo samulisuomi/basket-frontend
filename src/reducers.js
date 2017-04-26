@@ -17,13 +17,13 @@ import {
 } from './actions';
 
 // TODO: Real authentication:
-const thisUser = "you@example.com";
+const thisUser = 'you@example.com';
 
 const initialState = {
   items: [],
   users: [thisUser],
   shared: [],
-  loggedInAs: null
+  loggedInAs: thisUser
 };
 
 /* TODO: Get IDs from backend and use a temp id until request finished.
@@ -62,7 +62,7 @@ function itemsReducer(state = initialState, action) {
             text: action.text,
             bought: false,
             assigned: [],
-            comments: []
+            comments: [{id: 2, user: 'you@example.com', timestamp: new Date(), text: 'Testi testi'}]
           }
         ]
       };
@@ -166,7 +166,7 @@ function itemsReducer(state = initialState, action) {
       return {
         ...state,
         // Prevent removing the own user. TODO: Inform user about invalid action:
-        users: (action.user !== thisUser)
+        users: (action.user !== state.loggedInAs)
           ? state.users.filter(user => user !== action.user)
           : state.users
       }
