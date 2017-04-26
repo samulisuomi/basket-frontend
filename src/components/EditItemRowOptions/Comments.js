@@ -10,6 +10,8 @@ import Moment from 'react-moment';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import Delete from 'material-ui/svg-icons/action/delete';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -34,12 +36,6 @@ class Comments extends React.Component {
       });
     }
   }
-  
-  handleCancel = (event) => {
-    this.setState({
-      textFieldValue: ''
-    });
-  }
 
   render() {
     return (
@@ -49,8 +45,11 @@ class Comments extends React.Component {
             key={comment.id}
           >
             <div className="Comments-comment-header">
-              <small>{comment.user}</small>
+              <small className="Comments-comment-user">{comment.user}</small>
               <small><Moment calendar={true}>{comment.timestamp}</Moment></small>
+              <IconButton onTouchTap={() => this.props.onDeleteComment(comment.id)}>
+                <Delete />
+              </IconButton>
             </div>
             <div className="Comments-comment-text">
               <p>{comment.text}</p>

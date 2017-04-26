@@ -67,7 +67,7 @@ const ShoppingList = (props) => (
         onAssignItem={(user) => props.onAssignItem(item.id, user)}
         onUnassignItem={(user) => props.onUnassignItem(item.id, user)}
         onAddComment={(text) => props.onAddComment(item.id, text)}
-        onDeleteComment={(user) => props.onDeleteComment(item.id, user)}
+        onDeleteComment={(commentId) => props.onDeleteComment(commentId)}
         item={item}
         users={props.users}
         loggedInAs={props.loggedInAs}

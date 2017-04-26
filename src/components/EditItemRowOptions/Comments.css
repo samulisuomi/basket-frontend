@@ -4,18 +4,21 @@
 
 .Comments-comment {
   margin-top: 16px;
-  padding: 16px;
 }
 
 .Comments-comment-header {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding-left: 16px;
+}
+
+.Comments-comment-user {
+  flex: 1 0 auto;
 }
 
 .Comments-comment-text {
-  padding-top: 16px;
+  padding: 16px;
 }
 
 .Comments-footer {
