@@ -75,7 +75,7 @@ class EditItemRowActions extends React.Component {
           dialogDeleteLabel="Delete"
           onDelete={this.props.onDeleteItem}
         >
-          Item and its comments will be lost.
+          The item and its comments will be lost.
         </DeleteButtonDialog>
         <Dialog
           title={`Assign "${this.props.item.text}" to users`}
