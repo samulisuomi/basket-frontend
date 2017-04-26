@@ -90,7 +90,7 @@ class EditItemRowActions extends React.Component {
           title={`Comments about ${this.props.item.text}`}
           actions={this.getDialogCloseAction()}
           autoScrollBodyContent={true}
-          modal={false}
+          modal={true}
           open={this.state.dialogsOpen.COMMENTS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
         >
