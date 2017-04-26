@@ -6,12 +6,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Comments.css';
 
+import DeleteButtonDialog from '../DeleteButtonDialog/DeleteButtonDialog';
+
 import Moment from 'react-moment';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-import IconButton from 'material-ui/IconButton';
-import Delete from 'material-ui/svg-icons/action/delete';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -47,9 +47,14 @@ class Comments extends React.Component {
             <div className="Comments-comment-header">
               <small className="Comments-comment-user">{comment.user}</small>
               <small><Moment calendar={true}>{comment.timestamp}</Moment></small>
-              <IconButton onTouchTap={() => this.props.onDeleteComment(comment.id)}>
-                <Delete />
-              </IconButton>
+              <DeleteButtonDialog
+                tooltip="Delete"
+                dialogTitle="Delete comment?"
+                dialogDeleteLabel="Delete"
+                onDelete={() => this.props.onDeleteComment(comment.id)}
+              >
+                This action can't be undone.
+              </DeleteButtonDialog>
             </div>
             <div className="Comments-comment-text">
               <p>{comment.text}</p>
@@ -64,6 +69,7 @@ class Comments extends React.Component {
                 className="Comments-footer-TextField" 
                 placeholder="Write a comment..."
                 multiLine={true}
+                autoFocus={true}
                 value={this.state.textFieldValue}
                 onChange={this.handleTextFieldChange}
               />

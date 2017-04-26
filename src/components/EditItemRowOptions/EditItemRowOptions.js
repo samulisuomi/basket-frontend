@@ -11,11 +11,12 @@ import { getInitialDialogsOpenState, getDialogsOpenState } from '../../helpers/d
 import AssignUsers from './AssignUsers';
 import Comments from './Comments';
 
+import DeleteButtonDialog from '../DeleteButtonDialog/DeleteButtonDialog';
+
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 
 import IconButton from 'material-ui/IconButton';
-import Delete from 'material-ui/svg-icons/action/delete';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import Face from 'material-ui/svg-icons/action/face';
 import Comment from 'material-ui/svg-icons/communication/comment';
@@ -68,9 +69,14 @@ class EditItemRowActions extends React.Component {
         <IconButton tooltip="Comment" onTouchTap={() => this.handleOpen(COMMENTS_DIALOG)}>
           {this.props.item.comments.length ? <Comment /> : <ModeComment />}
         </IconButton>
-        <IconButton tooltip="Delete" onTouchTap={this.props.onDeleteItem}>
-          <Delete />
-        </IconButton>
+        <DeleteButtonDialog
+          tooltip="Delete"
+          dialogTitle="Delete item?"
+          dialogDeleteLabel="Delete"
+          onDelete={this.props.onDeleteItem}
+        >
+          Item and its comments will be lost.
+        </DeleteButtonDialog>
         <Dialog
           title={`Assign "${this.props.item.text}" to users`}
           actions={this.getDialogCloseAction()}
