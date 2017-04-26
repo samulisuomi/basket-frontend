@@ -3,6 +3,7 @@
 }
 
 .Comments-comment {
+  margin-top: 16px;
   padding: 16px;
 }
 
@@ -15,4 +16,21 @@
 
 .Comments-comment-text {
   padding-top: 16px;
+}
+
+.Comments-footer {
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.Comments-footer-input {
+  flex: 1 0 auto;
+  padding-right: 8px;
+}
+
+/* Override material default */
+.Comments-footer-TextField {
+  width: 100% !important;
 }

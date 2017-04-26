@@ -62,7 +62,7 @@ function itemsReducer(state = initialState, action) {
             text: action.text,
             bought: false,
             assigned: [],
-            comments: [{id: 2, user: 'you@example.com', timestamp: new Date(), text: 'A test comment, remove me'}]
+            comments: []
           }
         ]
       };
@@ -131,7 +131,7 @@ function itemsReducer(state = initialState, action) {
             return Object.assign({}, item, {
               comments: item.comments.concat([{
                 id: tempCommentIdCounter,
-                user: action.user,
+                user: state.loggedInAs,
                 timestamp: new Date(),
                 text: action.text
               }])

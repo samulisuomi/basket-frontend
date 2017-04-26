@@ -65,11 +65,10 @@ export const unassignItem = (itemId, user) => {
   };
 };
 
-export const addComment = (itemId, user, text) => {
+export const addComment = (itemId, text) => {
   return {
     type: ADD_COMMENT,
     itemId,
-    user,
     text
   };
 };
