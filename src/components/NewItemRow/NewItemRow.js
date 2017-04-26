@@ -59,7 +59,7 @@ class NewItemRow extends React.Component {
             />
             <RaisedButton
               className="NewItemRow-button"
-              label="Cancel"
+              label="Clear"
               onTouchTap={this.handleCancel} />
           </div>
         </form>
