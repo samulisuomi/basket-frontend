@@ -1,0 +1,15 @@
+.AssignUsers {
+  padding-top: 16px;
+}
+
+.AssignUsers-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-top: 16px;
+}
+
+small {
+  padding-top: 16px;
+}

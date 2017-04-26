@@ -78,7 +78,12 @@ class EditItemRowActions extends React.Component {
           open={this.state.dialogsOpen.ASSIGN_USERS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
         >
-          <AssignUsers assigned={this.props.item.assigned} users={this.props.users}/>
+          <AssignUsers
+            assigned={this.props.item.assigned}
+            users={this.props.users}
+            onAssignItem={this.props.onAssignItem}
+            onUnassignItem={this.props.onUnassignItem}
+          />
         </Dialog>
         <Dialog
           title={`Comments about ${this.props.item.text}`}

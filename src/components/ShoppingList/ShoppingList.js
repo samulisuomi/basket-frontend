@@ -48,8 +48,8 @@ const ShoppingList = (props) => (
         onToggleItem={() => props.onToggleItem(item.id)}
         onEditItem={props.onEditItem}
         onDeleteItem={() => props.onDeleteItem(item.id)}
-        onAssignItem={props.onAssignItem}
-        onUnassignItem={props.onUnassignItem}
+        onAssignItem={(user) => props.onAssignItem(item.id, user)}
+        onUnassignItem={(user) => props.onUnassignItem(item.id, user)}
         item={item}
         users={props.users}
       />

@@ -4,15 +4,27 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import './AssignUsers.css'
 import Checkbox from 'material-ui/Checkbox';
 
 const AssignUsers = (props) => (
-  <div className="SendEmail">
+  <div className="AssignUsers">
     {props.users.map(user => 
-      <div
+      <div className="AssignUsers-row"
         key={user}
       >
-        <Checkbox />
+        <div className="AssignUsers-Checkbox-container">
+          <Checkbox
+            onCheck={(event, isInputChecked) => {
+              if (isInputChecked) {
+                props.onAssignItem(user);
+              } else {
+                props.onUnassignItem(user);
+              }
+            }}
+            checked={props.assigned.indexOf(user) !== -1}
+          />
+        </div>
         <span>{user}</span>
       </div>
     )}
@@ -25,7 +37,8 @@ const AssignUsers = (props) => (
 
 AssignUsers.propTypes = {
   users: PropTypes.array.isRequired,
-  assigned: PropTypes.array.isRequired
+  assigned: PropTypes.array.isRequired,
+  onAssignItem: PropTypes.func.isRequired
 };
 
 export default AssignUsers;
