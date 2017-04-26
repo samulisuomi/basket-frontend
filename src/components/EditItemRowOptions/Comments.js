@@ -53,7 +53,7 @@ class Comments extends React.Component {
                 dialogDeleteLabel="Delete"
                 onDelete={() => this.props.onDeleteComment(comment.id)}
               >
-                This action can't be undone.
+                This can't be undone.
               </DeleteButtonDialog>
             </div>
             <div className="Comments-comment-text">
