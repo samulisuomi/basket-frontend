@@ -9,7 +9,6 @@ import './Comments.css';
 import Moment from 'react-moment';
 import Paper from 'material-ui/Paper';
 
-// TODO: Format timestamps more nicely
 const Comments = (props) => (
   <div className="Comments">
     {props.comments.map(comment => 

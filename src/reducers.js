@@ -62,7 +62,7 @@ function itemsReducer(state = initialState, action) {
             text: action.text,
             bought: false,
             assigned: [],
-            comments: [{id: 2, user: 'you@example.com', timestamp: new Date(), text: 'Testi testi'}]
+            comments: [{id: 2, user: 'you@example.com', timestamp: new Date(), text: 'A test comment, remove me'}]
           }
         ]
       };
