@@ -40,13 +40,14 @@ class Comments extends React.Component {
   render() {
     return (
       <div className="Comments">
+        {this.props.comments.length === 0 ? <small>No comments</small> : ''}
         {this.props.comments.map(comment => 
           <Paper className="Comments-comment"
             key={comment.id}
           >
             <div className="Comments-comment-header">
               <small className="Comments-comment-user">{comment.user}</small>
-              <small><Moment calendar={true}>{comment.timestamp}</Moment></small>
+              <small className="Comments-comment-timestamp"><Moment calendar={true}>{comment.timestamp}</Moment></small>
               <DeleteButtonDialog
                 tooltip="Delete"
                 dialogTitle="Delete comment?"

@@ -106,6 +106,8 @@ class HeaderOptions extends React.Component {
           title="Create new list?"
           actions={this.getDialogActions('Create new', this.props.onNewList)}
           modal={false}
+          autoDetectWindowHeight={false}
+          style={{overflow: 'auto'}}
           open={this.state.dialogsOpen.NEW_LIST_DIALOG}
           onRequestClose={() => this.handleClose(false)}
         >
@@ -114,7 +116,8 @@ class HeaderOptions extends React.Component {
         <Dialog
           title="Invite users"
           actions={this.getDialogCloseAction()}
-          autoScrollBodyContent={true}
+          autoDetectWindowHeight={false}
+          style={{overflow: 'auto'}}
           modal={false}
           open={this.state.dialogsOpen.INVITE_USERS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
@@ -128,7 +131,8 @@ class HeaderOptions extends React.Component {
         <Dialog
           title="Send via email"
           actions={this.getDialogActions('Send', () => mailtoRedirect(this.state.receiverEmail, this.props.items))}
-          autoScrollBodyContent={true}
+          autoDetectWindowHeight={false}
+          style={{overflow: 'auto'}}
           modal={false}
           open={this.state.dialogsOpen.SEND_EMAIL_DIALOG}
           onRequestClose={() => this.handleClose(false)}

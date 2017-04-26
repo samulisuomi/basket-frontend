@@ -33,7 +33,7 @@ class SendEmail extends React.Component {
           onChange={(event) =>
             this.handleTextFieldChange(event, this.props.onReceiverEmailChanged)
           }
-          placeholder="Add a new item..."
+          placeholder="Enter an email address..."
           autoFocus={true}
         />
         <p>

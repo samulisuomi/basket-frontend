@@ -80,7 +80,8 @@ class EditItemRowActions extends React.Component {
         <Dialog
           title={`Assign "${this.props.item.text}" to users`}
           actions={this.getDialogCloseAction()}
-          autoScrollBodyContent={true}
+          autoDetectWindowHeight={false}
+          style={{overflow: 'auto'}}
           modal={false}
           open={this.state.dialogsOpen.ASSIGN_USERS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
@@ -95,7 +96,8 @@ class EditItemRowActions extends React.Component {
         <Dialog
           title={`Comments about ${this.props.item.text}`}
           actions={this.getDialogCloseAction()}
-          autoScrollBodyContent={true}
+          autoDetectWindowHeight={false}
+          style={{overflow: 'auto'}}
           modal={true}
           open={this.state.dialogsOpen.COMMENTS_DIALOG}
           onRequestClose={() => this.handleClose(false)}
