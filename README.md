@@ -3,8 +3,8 @@
 Shopping list manager built with React, Redux and Material-UI. Deployed at http://sasuomi.github.io/basket-frontend
 
 ## Browser support
-* Should work and look fine in latest versions of Chrome, Firefox, Safari, Edge and IE11.
-* Should be usable in IE9+ but the layout will look a bit odd due to the usage of flexbox.
+* Should work and look fine in latest versions of Chrome, Firefox, Safari, Edge and IE10+.
+* Should be usable in IE9 but the layout will look odd due to the usage of flexbox.
 
 ## Future improvements
 * Split actions and reducers to domain specific files.
