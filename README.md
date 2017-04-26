@@ -13,6 +13,7 @@ Shopping list manager built with React, Redux and Material-UI. Deployed at http:
 * Code using dialogs could be refactored.
 * Implement filtering of the list.
 * Implement deleting all the bought items with one button.
+* Improve dialog layouts on smaller screens.
 * Add a backend service and tweak/expand parts with "TODO:" comments to utilize one.
 
 # Development
